@@ -1,0 +1,42 @@
+meta {
+  name: AddAccounting
+  type: http
+  seq: 2
+}
+
+post {
+  url: http://localhost:8080/api/shop
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "shopId": "0c5fbfdf-6e72-4481-8e71-e93fc5a751cb",
+    "income": [
+      {
+        "amount": 955.1,
+        "incomingConcept": "DIRECT_SALE",
+        "description": "venta al publico"
+      },
+      {
+        "amount": 21.4,
+        "incomingConcept": "DIRECT_SALE",
+        "description": "Pedido juan"
+      },
+      {
+        "amount": 194.2,
+        "incomingConcept": "DIRECT_SALE",
+        "description": "Pedido luis"
+      }
+    ],
+    "expense": [
+      {
+        "amount": 100.3,
+        "expensingConcept": "DIRECT_BUY",
+        "description": "compra huevos"
+      }
+    ],
+    "date": "2024-10-11T05:47:29.886Z"
+  }
+}
