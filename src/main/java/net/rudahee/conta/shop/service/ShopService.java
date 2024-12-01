@@ -90,4 +90,6 @@ public class ShopService {
 
         return accountingRepository.findById(accOut.getId()).orElseThrow();
     }
+
+
 }

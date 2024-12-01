@@ -20,8 +20,8 @@ public class StatisticsController {
     }
 
     @GetMapping
-    public ResponseEntity<?> createIncome() {
-        GlobalFinancialStatisticsDTO financialStatisticsDTO = financialStatisticsService.createGlobalFinancialStatistics(Instant.now().minus(10, ChronoUnit.DAYS), Instant.now().plus(10, ChronoUnit.DAYS));
+    public ResponseEntity<GlobalFinancialStatisticsDTO> getFinancialStatistics(@RequestParam() Instant from, @RequestParam() Instant to) {
+        GlobalFinancialStatisticsDTO financialStatisticsDTO = financialStatisticsService.createGlobalFinancialStatistics(from, to);
 
         return ResponseEntity.ok(financialStatisticsDTO);
     }

@@ -64,5 +64,7 @@ public interface AccountingRepository extends JpaRepository<Accounting, UUID> {
                                        @Param("endDate") Instant endDate,
                                        @Param("shopId") UUID shopId);
 
+    List<Accounting> getAccountingsByDateBetweenAndShop_Id(Instant dateAfter, Instant dateBefore, UUID shopId);
+
 
 }
