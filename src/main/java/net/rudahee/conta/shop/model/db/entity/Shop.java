@@ -24,7 +24,6 @@ public class Shop {
     @Column(nullable = false)
     private String name;
 
-
     @OneToMany(mappedBy = "shop", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
     @JsonManagedReference
     private List<Accounting> accountings;

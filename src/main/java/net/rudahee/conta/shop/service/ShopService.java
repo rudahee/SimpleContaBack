@@ -10,6 +10,7 @@ import net.rudahee.conta.incoming.model.api.IncomeDTO;
 import net.rudahee.conta.incoming.model.db.entity.Incoming;
 import net.rudahee.conta.incoming.model.db.repository.IncomingRepository;
 import net.rudahee.conta.shop.model.api.in.DailyAccountingDTO;
+import net.rudahee.conta.shop.model.api.out.ShopDTO;
 import net.rudahee.conta.shop.model.db.Repository.ShopRepository;
 import net.rudahee.conta.shop.model.db.entity.Shop;
 import org.springframework.stereotype.Service;
@@ -91,5 +92,9 @@ public class ShopService {
         return accountingRepository.findById(accOut.getId()).orElseThrow();
     }
 
+    public List<ShopDTO> getShops() {
+        List<ShopDTO> dtos = shopRepository.findAll().stream().map(shop -> new ShopDTO(shop.getId(), shop.getName())).toList();
+        return dtos;
+    }
 
 }
