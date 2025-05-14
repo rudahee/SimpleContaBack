@@ -39,4 +39,6 @@ public class AccountingController {
 
         return ResponseEntity.ok(accountingService.getAccountings(from, to, id));
     }
+
+
 }

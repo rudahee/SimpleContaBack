@@ -25,18 +25,21 @@ public class AccountingService {
         List<DailyAccountingDTO> dtos = new ArrayList<>();
         accounting.forEach(acc -> {
             dtos.add(DailyAccountingDTO.builder()
+                            .id(acc.getId())
                             .dailyExpense(acc.getDailyExpense())
                             .dailyIncome(acc.getDailyIncome())
                             .dailyProfit(acc.getDailyProfit())
                             .date(acc.getDate())
                             .listOfExpenses(acc.getExpensings().stream()
                                     .map(expensing -> new ExpenseDTO(
+                                            expensing.getId(),
                                             expensing.getAmount(),
                                             expensing.getExpensingConcept(),
                                             expensing.getDescription())
                                     ).toList())
                             .listOfIncomes(acc.getIncomings().stream()
                                     .map(income -> new IncomeDTO(
+                                            income.getId(),
                                             income.getAmount(),
                                             income.getIncomingConcept(),
                                             income.getDescription())
