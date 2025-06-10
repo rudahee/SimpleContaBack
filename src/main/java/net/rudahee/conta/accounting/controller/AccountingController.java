@@ -5,10 +5,7 @@ import net.rudahee.conta.accounting.model.api.DailyAccountingDTO;
 import net.rudahee.conta.accounting.services.AccountingService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.security.NoSuchAlgorithmException;
 import java.time.Instant;
@@ -28,7 +25,7 @@ public class AccountingController {
     }
 
     @GetMapping
-    public ResponseEntity<List<DailyAccountingDTO>> getAccounting(@RequestParam String token, @RequestParam(defaultValue = "2024-11-00T01:00:00.000000000Z") Instant from, @RequestParam(required = false) Instant to, UUID id) throws NoSuchAlgorithmException {
+    public ResponseEntity<List<DailyAccountingDTO>> getAccounting(@RequestParam String token, @RequestParam(defaultValue = "2024-11-00T01:00:00.000000000Z") Instant from, @RequestParam(required = false) Instant to,  @RequestParam UUID id) throws NoSuchAlgorithmException {
         if (!sessionService.validateToken(token)) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         }
@@ -39,6 +36,18 @@ public class AccountingController {
 
         return ResponseEntity.ok(accountingService.getAccountings(from, to, id));
     }
+
+
+    @GetMapping("/{id}")
+    public ResponseEntity<DailyAccountingDTO> getOneAccounting(@RequestParam String token, @PathVariable UUID id) throws NoSuchAlgorithmException {
+        if (!sessionService.validateToken(token)) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
+
+        return ResponseEntity.ok(accountingService.getAccountingById(id));
+    }
+
+
 
 
 }

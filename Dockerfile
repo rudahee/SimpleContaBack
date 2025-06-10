@@ -7,7 +7,7 @@ COPY gradle ./gradle
 
 COPY src ./src
 
-RUN gradle buildd -x test
+RUN gradle build -x test
 
 FROM openjdk:21-jdk-slim
 WORKDIR /app
