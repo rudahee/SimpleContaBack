@@ -60,6 +60,7 @@ public class AccountingService {
                 .dailyExpense(accounting.getDailyExpense())
                 .dailyIncome(accounting.getDailyIncome())
                 .dailyProfit(accounting.getDailyProfit())
+                .shopId(accounting.getShop().getId())
                 .date(accounting.getDate())
                 .listOfExpenses(accounting.getExpensings().stream()
                         .map(expensing -> new ExpenseDTO(

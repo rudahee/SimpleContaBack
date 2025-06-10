@@ -19,6 +19,7 @@ import java.util.UUID;
 public class DailyAccountingDTO {
 
     private UUID id;
+    private UUID shopId;
     private Instant date;
     private Double dailyExpense;
     private Double dailyIncome;
